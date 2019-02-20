@@ -14,11 +14,7 @@ namespace :libsass do
     end
   end
 
-  file "Makefile" do
-    sh "git submodule update --init"
-  end
-
-  file "lib/libsass.so" => "Makefile" do
+  file "lib/libsass.so" do
     make_program = ENV['MAKE']
     make_program ||= case RUBY_PLATFORM
                      when /mswin/
